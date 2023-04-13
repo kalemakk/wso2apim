@@ -1,0 +1,39 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: docker-build
+  namespace: wso2apim
+  labels:
+    name: docker-build
+spec:
+  triggers:
+    - type: GitHub
+      github:
+        secret: github-credentails
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/kalemakk/wso2apim.git'
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'wso2am:latest'
+        namespace: wso2apim
+      # env:
+      #   - name: EXAMPLE
+      #     value: sample-app
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'wso2am-out:latest'
+  postCommit:
+    args:
+      - bundle
+      - exec
+      - rake
+      - test
