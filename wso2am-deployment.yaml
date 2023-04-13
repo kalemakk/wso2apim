@@ -31,6 +31,7 @@ spec:
     to:
       kind: ImageStreamTag
       name: 'wso2am-out:latest'
+      amespace: wso2apim
   postCommit:
     args:
       - bundle
