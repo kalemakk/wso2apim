@@ -22,7 +22,7 @@ spec:
     dockerStrategy:
       from:
         kind: ImageStreamTag
-        name: 'wso2am:latest'
+        name: 'wso2am'
         namespace: wso2apim
       # env:
       #   - name: EXAMPLE
@@ -30,7 +30,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'wso2am-out:latest'
+      name: 'wso2am-out'
       amespace: wso2apim
   postCommit:
     args:
