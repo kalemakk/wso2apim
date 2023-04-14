@@ -21,20 +21,14 @@ spec:
     type: Docker
     dockerStrategy:
       from:
-        kind: ImageStreamTag
-        name: 'wso2am'
-        namespace: wso2apim
+        kind: DockerImage
+        name: 'wso2/wso2am:latest'
       # env:
       #   - name: EXAMPLE
       #     value: sample-app
   output:
     to:
       kind: ImageStreamTag
-      name: 'wso2am-out'
-      amespace: wso2apim
-  postCommit:
-    args:
-      - bundle
-      - exec
-      - rake
-      - test
+      name: 'wso2am-out:latest'
+      namespace: wso2apim
+
