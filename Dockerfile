@@ -21,7 +21,7 @@
 FROM wso2/wso2am
 
 # Change ownership of relevant directories to the new user
-RUN chown -R wso2carbon:wso2 /home/wso2carbon/wso2am-4.2.0
+RUN chown -R wso2carbon:wso2 /home/wso2carbon/wso2am-4.0.0
 
 # Set user to wso2carbon
 USER wso2carbon
